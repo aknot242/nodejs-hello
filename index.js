@@ -10,7 +10,7 @@ function if_header_defined_return(request, headerName) {
 app.get('/', function (req, res) {
     res.send(
     `<html><head><title></title><body style="font-family: tahoma;">
-    <h2 style="color: red;">${process.env.APP_SERVER}</h2>
+    <h2 style="color: ${process.env.COLOR};">${process.env.APP_SERVER}</h2>
     Hello, ${process.env.NAME}!<br>&nbsp;<br>&nbsp;<br>\
     <h3>Proxy Headers</h3>\
     ${if_header_defined_return(req, 'Host')}<br>\
