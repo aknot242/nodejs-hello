@@ -8,13 +8,17 @@ function if_header_defined_return(request, headerName) {
 
 //Define request response in root URL (/) and response with text Hello World!
 app.get('/', function (req, res) {
-    res.send(`Hello, ${process.env.NAME}!<br>&nbsp;<br>&nbsp;<br>\
-    <h3>Defined Proxy Headers</h3>\
+    res.send(
+    `<html><head><title></title><body style="font-family: tahoma;">
+    <h2 style="color: red;">${process.env.APP_SERVER}</h2>
+    Hello, ${process.env.NAME}!<br>&nbsp;<br>&nbsp;<br>\
+    <h3>Proxy Headers</h3>\
     ${if_header_defined_return(req, 'Host')}<br>\
     ${if_header_defined_return(req, 'X-Forwarded-For')}<br>\
     ${if_header_defined_return(req, 'X-Forwarded-Port')}<br>\
     ${if_header_defined_return(req, 'X-Forwarded-Proto')}<br>\
-    ${if_header_defined_return(req, 'X-Forwarded-Host')}<br>`)
+    ${if_header_defined_return(req, 'X-Forwarded-Host')}<br>\
+    </body></html>`)
 })
 //Launch listening server on port 8080 and consoles the log.
 app.listen(8080, function () {
